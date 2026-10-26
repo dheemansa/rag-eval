@@ -218,3 +218,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# rag-eval runtime
+.rag_eval_cache/
+reports/
+*.json.bak

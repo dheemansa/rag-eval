@@ -1,0 +1,229 @@
+{
+  "passages": [
+    {
+      "id": "dk-install-01",
+      "text": "DataKit is a lightweight Python library for tabular data processing. Install it with: pip install datakit. The minimum supported Python version is 3.10.",
+      "version": "current"
+    },
+    {
+      "id": "dk-install-01-stale",
+      "text": "DataKit is a lightweight Python library for tabular data processing. Install it with: pip install datakit. The minimum supported Python version is 3.8.",
+      "version": "stale"
+    },
+    {
+      "id": "dk-load-01",
+      "text": "Use datakit.load_csv(path) to load a CSV file into a DataKit Table. The function returns a Table object. Encoding defaults to UTF-8.",
+      "version": "current"
+    },
+    {
+      "id": "dk-load-02",
+      "text": "datakit.load_json(path) loads a JSON array of objects into a Table. Nested objects are flattened using dot notation for column names.",
+      "version": "current"
+    },
+    {
+      "id": "dk-load-03",
+      "text": "datakit.load_parquet(path) loads a Parquet file. Parquet support requires the optional dependency pyarrow: pip install datakit[parquet].",
+      "version": "current"
+    },
+    {
+      "id": "dk-table-01",
+      "text": "A DataKit Table has attributes .columns (list of column names) and .shape (rows, cols). Call table.head(n=5) to preview the first n rows.",
+      "version": "current"
+    },
+    {
+      "id": "dk-table-02",
+      "text": "Filter rows with table.filter(predicate). The predicate is a callable that receives a row dict and returns True to keep the row.",
+      "version": "current"
+    },
+    {
+      "id": "dk-table-03",
+      "text": "Select columns with table.select(['col_a', 'col_b']). Drop columns with table.drop(['col_c']). Both return a new Table.",
+      "version": "current"
+    },
+    {
+      "id": "dk-table-04",
+      "text": "Sort a table with table.sort_by('column', ascending=True). Missing values are placed at the end by default.",
+      "version": "current"
+    },
+    {
+      "id": "dk-agg-01",
+      "text": "Aggregate with table.groupby('key').agg({'value': 'sum'}). Supported aggregations are sum, mean, count, min, and max.",
+      "version": "current"
+    },
+    {
+      "id": "dk-agg-01-stale",
+      "text": "Aggregate with table.groupby('key').agg({'value': 'sum'}). Supported aggregations are sum, mean, and count only.",
+      "version": "stale"
+    },
+    {
+      "id": "dk-agg-02",
+      "text": "table.describe() returns summary statistics for every numeric column: count, mean, std, min, 25%, 50%, 75%, and max.",
+      "version": "current"
+    },
+    {
+      "id": "dk-join-01",
+      "text": "Join two tables with table.join(other, on='key', how='inner'). Supported join types are inner, left, right, and outer.",
+      "version": "current"
+    },
+    {
+      "id": "dk-join-01-stale",
+      "text": "Join two tables with table.join(other, on='key', how='inner'). Only inner and left joins are supported.",
+      "version": "stale"
+    },
+    {
+      "id": "dk-null-01",
+      "text": "Handle missing values with table.fill_na(value) or table.dropna(how='any'). fill_na replaces nulls; dropna removes rows with nulls.",
+      "version": "current"
+    },
+    {
+      "id": "dk-null-02",
+      "text": "Detect missing values with table.isna() which returns a Table of booleans, or table.null_count() which returns a dict of column to null count.",
+      "version": "current"
+    },
+    {
+      "id": "dk-export-01",
+      "text": "Export a Table with table.to_csv(path), table.to_json(path), or table.to_parquet(path). to_parquet requires pyarrow.",
+      "version": "current"
+    },
+    {
+      "id": "dk-export-02",
+      "text": "table.to_dict(orient='records') returns a list of row dicts. orient='list' returns a dict of column name to value list.",
+      "version": "current"
+    },
+    {
+      "id": "dk-types-01",
+      "text": "Cast column types with table.astype({'age': 'int', 'score': 'float'}). Supported types are int, float, str, bool, and datetime.",
+      "version": "current"
+    },
+    {
+      "id": "dk-types-02",
+      "text": "Parse dates with table.parse_dates(['created_at']). The default date format is ISO 8601. Pass format= to override.",
+      "version": "current"
+    },
+    {
+      "id": "dk-config-01",
+      "text": "Global options are set via datakit.set_option(name, value). Available options: display.max_rows (default 20) and display.precision (default 6).",
+      "version": "current"
+    },
+    {
+      "id": "dk-config-01-stale",
+      "text": "Global options are set via datakit.set_option(name, value). Available options: display.max_rows (default 10) and display.precision (default 4).",
+      "version": "stale"
+    },
+    {
+      "id": "dk-config-02",
+      "text": "Reset all options to defaults with datakit.reset_options(). Read the current value with datakit.get_option(name).",
+      "version": "current"
+    },
+    {
+      "id": "dk-cli-01",
+      "text": "DataKit ships a CLI: datakit preview file.csv prints the first 10 rows. datakit info file.csv prints shape and column dtypes.",
+      "version": "current"
+    },
+    {
+      "id": "dk-cli-02",
+      "text": "Convert formats from the CLI: datakit convert input.csv output.parquet. Supported conversions: csv, json, parquet.",
+      "version": "current"
+    },
+    {
+      "id": "dk-perf-01",
+      "text": "For tables larger than 1 million rows, enable streaming mode with datakit.load_csv(path, streaming=True). Streaming mode processes chunks of 10_000 rows.",
+      "version": "current"
+    },
+    {
+      "id": "dk-perf-02",
+      "text": "table.lazy() returns a LazyTable that defers computation until .collect() is called. Chained filters and selects are fused into a single pass.",
+      "version": "current"
+    },
+    {
+      "id": "dk-errors-01",
+      "text": "DataKit raises ColumnNotFoundError when a requested column is missing. SchemaError is raised on type cast failures. FileFormatError is raised for unsupported file types.",
+      "version": "current"
+    },
+    {
+      "id": "dk-errors-02",
+      "text": "All DataKit exceptions inherit from datakit.DataKitError. Catch DataKitError to handle any library-specific failure.",
+      "version": "current"
+    },
+    {
+      "id": "dk-license-01",
+      "text": "DataKit is released under the MIT License. The source repository is hosted at https://github.com/example/datakit.",
+      "version": "current"
+    },
+    {
+      "id": "dk-version-01",
+      "text": "The current stable release of DataKit is 2.1.0. Check the installed version with: import datakit; print(datakit.__version__).",
+      "version": "current"
+    },
+    {
+      "id": "dk-version-01-stale",
+      "text": "The current stable release of DataKit is 1.4.2. Check the installed version with: import datakit; print(datakit.__version__).",
+      "version": "stale"
+    },
+    {
+      "id": "dk-apply-01",
+      "text": "Apply a function to each row with table.apply(fn, axis='rows') or to each column with axis='columns'. The function must return a single value per row or column.",
+      "version": "current"
+    },
+    {
+      "id": "dk-merge-01",
+      "text": "Concatenate tables vertically with datakit.concat([t1, t2]). Columns are aligned by name; missing columns are filled with null.",
+      "version": "current"
+    },
+    {
+      "id": "dk-sample-01",
+      "text": "Sample rows with table.sample(n=100, seed=42) for a fixed-size sample, or table.sample(frac=0.1) for a fraction of rows.",
+      "version": "current"
+    },
+    {
+      "id": "dk-index-01",
+      "text": "Set an index column with table.set_index('id'). Reset with table.reset_index(). Indexed lookups use table.loc[key].",
+      "version": "current"
+    },
+    {
+      "id": "dk-plot-01",
+      "text": "Basic plotting is available via table.plot(kind='hist', column='age'). Supported kinds are hist, bar, line, and scatter. Matplotlib is an optional dependency.",
+      "version": "current"
+    },
+    {
+      "id": "dk-validate-01",
+      "text": "Validate a schema with table.validate(schema) where schema is a dict of column to expected type. Returns True on success or raises SchemaError.",
+      "version": "current"
+    },
+    {
+      "id": "dk-pipe-01",
+      "text": "Chain transformations with table.pipe(fn1).pipe(fn2). Each function receives a Table and returns a Table. Useful for reusable pipelines.",
+      "version": "current"
+    },
+    {
+      "id": "dk-sql-01",
+      "text": "Run SQL against a Table with datakit.sql(table, 'SELECT name, age FROM t WHERE age > 30'). The table is registered as alias t.",
+      "version": "current"
+    },
+    {
+      "id": "noise-01",
+      "text": "The weather in Reykjavik averages 5 degrees Celsius in summer. Pack a warm jacket if you visit Iceland.",
+      "version": "noise"
+    },
+    {
+      "id": "noise-02",
+      "text": "A standard chessboard has 64 squares arranged in an 8 by 8 grid. Each player starts with 16 pieces.",
+      "version": "noise"
+    },
+    {
+      "id": "noise-03",
+      "text": "Photosynthesis converts light energy into chemical energy in plants. Chlorophyll absorbs primarily blue and red light.",
+      "version": "noise"
+    },
+    {
+      "id": "noise-04",
+      "text": "The speed of light in vacuum is approximately 299792458 meters per second. It is a defined constant in SI units.",
+      "version": "noise"
+    },
+    {
+      "id": "noise-05",
+      "text": "Mount Everest rises 8849 meters above sea level. It sits on the border of Nepal and China.",
+      "version": "noise"
+    }
+  ]
+}
